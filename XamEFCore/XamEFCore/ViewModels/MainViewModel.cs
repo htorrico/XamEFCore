@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Scaffolding.Metadata;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -27,7 +28,8 @@ namespace XamEFCore.ViewModels
         {
             this.LoadMenu();
 
-            this.SaveArtistasList();
+            //this.SaveArtistasList();
+            //this.DeleArtistasList();
         }
         #endregion Constructor
 
@@ -39,6 +41,7 @@ namespace XamEFCore.ViewModels
             this.Menu.Clear();
             this.Menu.Add(new MenuItemViewModel { Id = 1, Option = "Crear" });
             this.Menu.Add(new MenuItemViewModel { Id = 2, Option = "Lista de Registros" });
+            this.Menu.Add(new MenuItemViewModel { Id = 3, Option = "Eliminar Registros" });
         }
         #endregion Methods
 
@@ -54,5 +57,11 @@ namespace XamEFCore.ViewModels
 
             dataService.SaveList(artistas);
         }
+        private void DeleArtistasList()
+        {
+            var artistas = dataService.Get().ToList();
+            dataService.DeleteList(artistas);
+        }
+        
     }
 }

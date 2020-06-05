@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
+using XamEFCore.Models;
+using XamEFCore.Services;
 using XamEFCore.Views;
 
 namespace XamEFCore.ViewModels
@@ -30,10 +33,19 @@ namespace XamEFCore.ViewModels
         {
             if(this.Id == 1)
                 Application.Current.MainPage.Navigation.PushAsync(new AlbumPage());
-
-            else
+            if (this.Id == 2)
                 Application.Current.MainPage.Navigation.PushAsync(new AlbumesPage());
+            if (this.Id == 3)            
+                DeleAlbumList();    
+            
+        }
+        DBDataAccess<Album> dataService = new DBDataAccess<Album>();
+        private void DeleAlbumList()
+        {
+            var Albunes = dataService.Get().ToList();
+            dataService.DeleteList(Albunes);
         }
         #endregion Methods
+
     }
 }

@@ -93,26 +93,39 @@ namespace XamEFCore.ViewModels
                         Anio = this.Anio
                     };
 
-                    if(newAlbum != null)
-                    {
-                        if (this.dataServiceAlbumes.Create(newAlbum))
-                        {
-                            await Application.Current.MainPage.DisplayAlert("Operación Exitosa",
-                                                                            $"Albúm del artista: {this.SelectedArtista.Nombre} " +
-                                                                            $"creado correctamente en la base de datos",
-                                                                            "Ok");
+                    var album = this.dataServiceAlbumes.Get(x => x.Titulo == newAlbum.Titulo).FirstOrDefault();
 
-                            this.SelectedArtista = null;
-                            this.Titulo = string.Empty;
-                            this.Precio = 0;
-                            this.Anio = DateTime.Now.Year;
+                    if (album ==null)
+                    {
+                        if (newAlbum != null)
+                        {
+                            if (this.dataServiceAlbumes.Create(newAlbum))
+                            {
+                                await Application.Current.MainPage.DisplayAlert("Operación Exitosa",
+                                                                                $"Albúm del artista: {this.SelectedArtista.Nombre} " +
+                                                                                $"creado correctamente en la base de datos",
+                                                                                "Ok");
+
+                                this.SelectedArtista = null;
+                                this.Titulo = string.Empty;
+                                this.Precio = 0;
+                                this.Anio = DateTime.Now.Year;
+                            }
+
+                            else
+                                await Application.Current.MainPage.DisplayAlert("Operación Fallida",
+                                                                                $"Error al crear el Albúm en la base de datos",
+                                                                                "Ok");
                         }
-                            
-                        else
-                            await Application.Current.MainPage.DisplayAlert("Operación Fallida",
-                                                                            $"Error al crear el Albúm en la base de datos",
-                                                                            "Ok");
                     }
+                    else
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Validación",
+                                                                              $"Título Repetido",
+                                                                              "Ok");
+                    }
+
+                    
                 });
             }
         }
