@@ -29,6 +29,45 @@ namespace XamEFCore.ViewModels
             this.LoadMenu();
 
             //this.SaveArtistasList();
+
+            // DBDataAccess<Album> dBDataAccess = new DBDataAccess<Album>();
+
+
+            //Insertar nuevo album
+            //   dBDataAccess.Create(new Album { 
+            //    Titulo = "COVID 2020", 
+            //    Anio = 2020 ,
+            //    ArtistaID=1            
+            //});
+
+            //Insertar artista y el album
+            //Gian Marco
+            //Album Invierno 2021
+
+
+            //No saber usar el ORM
+            //DBDataAccess<Artista> serviceArtista = new DBDataAccess<Artista>();
+            //serviceArtista.Create(new Artista { Nombre = "GianMarco" });
+            //Artista artista = serviceArtista.Get(x => x.Nombre == "GianMarco").FirstOrDefault();
+            //DBDataAccess<Album> serviceAlbum = new DBDataAccess<Album>();
+            //serviceAlbum.Create(new Album { Titulo = "Titulo", ArtistaID = artista.ArtistaID });
+
+            //ORM 
+            DBDataAccess<Album> serviceAlbum = new DBDataAccess<Album>();
+            //Services.serviceAlbum serviceAlbum = new serviceAlbum();
+            serviceAlbum.Create(
+                new Album
+                {
+                    Titulo = "Album 2020",
+                    Artista = new Artista { Nombre = "Marcelo Mota" }
+                }
+                );
+
+
+
+
+
+
             //this.DeleArtistasList();
         }
         #endregion Constructor
