@@ -19,8 +19,9 @@ namespace XamEFCore.Services
 
             try
             {                
-                _context.Entry(entity).State = EntityState.Added;
-                _context.SaveChanges();
+                //_context.Entry(entity).State = EntityState.Added;
+                _context.Set<T>().Add(entity);
+                _context.SaveChanges();                
 
                 created = true;
             }

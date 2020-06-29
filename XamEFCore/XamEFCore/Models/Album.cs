@@ -9,6 +9,8 @@ namespace XamEFCore.Models
         public int AlbumID { get; set; }
         public int ArtistaID { get; set; }
         public Artista Artista { get; set; }
+        public List<Cancion> Canciones { get; set; }
+
 
         public string Titulo { get; set; }
         public double Precio { get; set; }

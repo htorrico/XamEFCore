@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using XamEFCore.Models;
 using XamEFCore.Services;
@@ -54,12 +55,19 @@ namespace XamEFCore.ViewModels
 
             //ORM 
             DBDataAccess<Album> serviceAlbum = new DBDataAccess<Album>();
+            List<Cancion> canciones = new List<Cancion>();
+            canciones.Add(new Cancion { Nombre = "La Chata" });
+            canciones.Add(new Cancion { Nombre = "Decir Adios" });
+            canciones.Add(new Cancion { Nombre = "Pan con Mantequilla" });
+            canciones.Add(new Cancion { Nombre = "Rosas en el Bar" });
+
             //Services.serviceAlbum serviceAlbum = new serviceAlbum();
             serviceAlbum.Create(
                 new Album
                 {
-                    Titulo = "Album 2020",
-                    Artista = new Artista { Nombre = "Marcelo Mota" }
+                    Titulo = "Album 2010",
+                    Artista = new Artista { Nombre = "Grupo Amén" },
+                    Canciones= canciones
                 }
                 );
 
