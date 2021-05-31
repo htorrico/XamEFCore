@@ -13,6 +13,7 @@ namespace XamEFCore
 
             GetContext().Database.EnsureCreated();
             MainPage = new NavigationPage(new Views.MainPage());
+            //MainPage = new NavigationPage(new InsertarCancion());
         }
 
         // Método para obtener el contexto cuando se inicia la aplicación

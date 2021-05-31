@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamEFCore.InsertarCancion">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry  x:Name="txtTitulo" Text=""></Entry>
+            <Entry x:Name="txtAnnio" Text="2021" ></Entry>
+            <Button Text="Grabar" x:Name="btnGrabar" Clicked="btnGrabar_Clicked"> </Button>
+            <Button Text="Listar" x:Name="btnListar" Clicked="btnListar_Clicked"></Button>
+            <Button Text="Eliminar" x:Name="btnEliminar" Clicked="btnEliminar_Clicked"></Button>
+            <StackLayout Orientation="Horizontal">
+            <Entry x:Name="txtFiltro" Text="" ></Entry>
+            <Button Text="Buscar" x:Name="btnBuscar" Clicked="btnBuscar_Clicked"></Button>
+            </StackLayout>
+            <ListView  x:Name="lvCanciones"               >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Annio}"></Label>
+                                <Label Text="{Binding Titulo}"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
